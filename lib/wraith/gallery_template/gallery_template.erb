@@ -49,7 +49,12 @@
                                             <img class="short-screenshot img-thumbnail" src="<%=path%><%=files[:diff][:thumb]%>">
                                         </a>
                                     <% end %>
-                                    <p class="text-center">diff</p>
+                                    <p class="text-center">
+                                        diff
+                                        <% if files[:sbs] %>
+                                            <a href="<%=files[:sbs][:filename]%>">side-by-side</a>
+                                        <% end %>
+                                    </p>
                                     <p class="text-center text-muted"><%=files[:data]%> % different</p>
 
                                 </div>

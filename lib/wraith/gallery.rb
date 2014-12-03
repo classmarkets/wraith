@@ -70,6 +70,8 @@ class Wraith::GalleryGenerator
       diff_check(size_dict, filepath)
     when 'data'
       data_check(size_dict, dirname, filepath)
+    when 'sbs'
+      sbs_check(size_dict, filepath)
     else
       variant_check(size_dict, group)
     end
@@ -87,6 +89,12 @@ class Wraith::GalleryGenerator
   def diff_check(size_dict, filepath)
     size_dict[:diff] = {
       filename: filepath, thumb: @thumbnail
+    }
+  end
+
+  def sbs_check(size_dict, filepath)
+    size_dict[:sbs] = {
+      filename: filepath
     }
   end
 

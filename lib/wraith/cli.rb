@@ -2,6 +2,7 @@ require 'thor'
 require 'wraith'
 require 'wraith/save_images'
 require 'wraith/crop'
+require 'wraith/side_by_side'
 require 'wraith/spider'
 require 'wraith/folder'
 require 'wraith/thumbnails'
@@ -70,6 +71,12 @@ class Wraith::CLI < Thor
     crop.crop_images
   end
 
+  desc 'generate_side_by_side_images [config_name]', 'generate side-by-side views of variants'
+  def generate_side_by_side_images(config_name)
+    sbs = Wraith::SideBySideImages.new(config_name)
+    sbs.generate_side_by_side_images
+  end
+
   desc 'compare_images [config_name]', 'compares images to generate diffs'
   def compare_images(config_name)
     compare = Wraith::CompareImages.new(config_name)
@@ -125,6 +132,7 @@ class Wraith::CLI < Thor
     crop_images(config)
     compare_images(config)
     generate_thumbnails(config)
+    generate_side_by_side_images(config)
     generate_gallery(config)
   end
 end
